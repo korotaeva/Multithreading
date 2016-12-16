@@ -3,7 +3,6 @@ package ru.innopolis.uni.cource3.homework.Parser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
-import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Loader.Loader;
 import ru.innopolis.uni.cource3.homework.Recource.Recource;
 
@@ -29,7 +28,7 @@ public class ParserRecourceFile extends Recource implements Loader {
             BufferedReader buffer = new BufferedReader(file)) {
             String str;
             while ((str = buffer.readLine()) != null && !monitor.isError()) {
-                (new ParserSum()).parsing(str,monitor);
+                (new ParserStr()).parsing(str,monitor);
             }
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());

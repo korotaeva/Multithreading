@@ -5,7 +5,7 @@ import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
 /**
  * Created by korot on 17.12.2016.
  */
-public class ParserSum implements Parser{
+public class ParserStr implements Parser{
 
     @Override
     public void parsing(String str, Monitor monitor) {
