@@ -38,7 +38,7 @@ clean {
 
 task rebuild(dependsOn: ['clean', 'build']){
     doLast {
-        println('Rebuild all finish')
+        println('Rebuild all finished')
     }
 }
 build.mustRunAfter clean
