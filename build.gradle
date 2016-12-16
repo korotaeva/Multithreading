@@ -1,14 +1,72 @@
-group 'Multithreading'
+group 'ru.innopolis.uni.cource3.homework'
 version '1.0.0'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.5
+apply plugin: "java"
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    // compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+
+
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+clean {
+    doLast {
+        println('Clean all finished')
+    }
+}
+
+task rebuild(dependsOn: ['clean', 'build']){
+    doLast {
+        println('Rebuild all finish')
+    }
+}
+build.mustRunAfter clean
+
+configurations {
+    def Properties props = new Properties()
+    def propFile = file('build.num')
+    if (propFile.canRead()){
+        props.load(new FileInputStream(propFile))
+        if (props!=null && props.containsKey('version')) {
+            def versionCode = props['version'].toInteger() + 1;
+            props['version'] = versionCode.toString();
+            jar.archiveName = project.name + "-"+ project.version + " build " + versionCode + '.jar';
+            props.store(new FileOutputStream(propFile), "Comments");
+        }
+    }
+}
+
+
+run {
+    mainClassName = "ru.innopolis.uni.cource3.homework.Main";
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'ru.innopolis.uni.cource3.homework.Main'
+        )
+    }
 }
