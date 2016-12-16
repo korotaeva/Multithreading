@@ -10,5 +10,5 @@ import java.io.IOException;
  * Created by korot on 16.12.2016.
  */
 public interface Loader {
-    void downloadRecource(Monitor monitor) throws IOException;
+    void resourceProcessing(Monitor monitor) throws IOException;
 }

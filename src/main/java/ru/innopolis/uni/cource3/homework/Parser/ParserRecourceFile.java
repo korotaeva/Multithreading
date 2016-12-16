@@ -1,5 +1,7 @@
 package ru.innopolis.uni.cource3.homework.Parser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Loader.Loader;
@@ -15,12 +17,14 @@ import java.io.IOException;
  */
 public class ParserRecourceFile extends Recource implements Loader {
 
+    public static Logger logger = LoggerFactory.getLogger(ParserRecourceFile.class);
+
     public ParserRecourceFile(String path) {
         super(path);
     }
 
     @Override
-    public void downloadRecource(Monitor monitor) throws IOException {
+    public void resourceProcessing(Monitor monitor) throws IOException {
         try (FileReader file = new FileReader(getPath());
             BufferedReader buffer = new BufferedReader(file)) {
             String str;

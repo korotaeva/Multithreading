@@ -34,7 +34,7 @@ public class Recource  implements Loader  {
 
 
     @Override
-    public void downloadRecource(Monitor monitor) throws IOException {
+    public void resourceProcessing(Monitor monitor) throws IOException {
 
     }
 }

@@ -3,7 +3,6 @@ package ru.innopolis.uni.cource3.homework.Thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
-import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Recource.Recource;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.io.IOException;
 
 /**
  * Created by korot on 10.12.2016.
- * Поток, который загружает ресурсы и вычисляет сумму
+ * Поток, который загружает ресурсы и выполняет бизнес логику приложения
  */
 public class ResourceThread  extends Thread implements Runnable{
 
@@ -49,7 +48,7 @@ public class ResourceThread  extends Thread implements Runnable{
     public void run() {
         if (recource.getPath() != null && !recource.getPath().equals("")){
             try {
-                recource.downloadRecource(getMonitor());
+                recource.resourceProcessing(getMonitor());
             } catch (IOException e) {
                 e.printStackTrace();
             }
