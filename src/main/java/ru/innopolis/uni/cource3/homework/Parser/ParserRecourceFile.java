@@ -29,10 +29,7 @@ public class ParserRecourceFile extends Recource implements Loader {
             BufferedReader buffer = new BufferedReader(file)) {
             String str;
             while ((str = buffer.readLine()) != null && !monitor.isError()) {
-                String[] tokens = str.split(" ");
-                for (String element : tokens) {
-                    monitor.processing(element);
-                }
+                (new ParserSum()).parsing(str,monitor);
             }
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());

@@ -1,11 +1,6 @@
 package ru.innopolis.uni.cource3.homework.Parser;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import ru.innopolis.uni.cource3.homework.Recource.Recource;
-import ru.innopolis.uni.cource3.homework.Validator.ValidatorEvenPositive;
-
-import java.math.BigInteger;
+import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
 
 /**
  * Created by korot on 17.12.2016.
@@ -13,9 +8,10 @@ import java.math.BigInteger;
 public class ParserSum implements Parser{
 
     @Override
-    public int parsing(String str) {
-        int i = Integer.parseInt(str);
-        return i;
-
+    public void parsing(String str, Monitor monitor) {
+        String[] tokens = str.split(" ");
+        for (String element : tokens) {
+            monitor.processing(element);
+        }
     }
 }

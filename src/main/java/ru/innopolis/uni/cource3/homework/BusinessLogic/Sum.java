@@ -2,7 +2,6 @@ package ru.innopolis.uni.cource3.homework.BusinessLogic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.innopolis.uni.cource3.homework.Parser.ParserSum;
 import ru.innopolis.uni.cource3.homework.Validator.ValidatorEvenPositive;
 
 import java.math.BigInteger;
@@ -50,7 +49,7 @@ public class Sum implements Monitor {
     @Override
     public void processing(String str){
         try {
-            int i = new ParserSum().parsing(str);
+            int i = Integer.parseInt(str);
 
             if ((new ValidatorEvenPositive()).validate(i)){
                 synchronized (this) {
