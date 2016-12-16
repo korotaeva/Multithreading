@@ -3,7 +3,9 @@ package ru.innopolis.uni.cource3.homework.Thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
-import ru.innopolis.uni.cource3.homework.Parser.ParserRecource;
+import ru.innopolis.uni.cource3.homework.Recource.Recource;
+
+import java.io.IOException;
 
 
 /**
@@ -15,18 +17,18 @@ public class ResourceThread  extends Thread implements Runnable{
 
     private static Logger logger = LoggerFactory.getLogger(ResourceThread.class);
 
-    public ParserRecource getRecource() {
+    public Recource getRecource() {
         return recource;
     }
 
-    public void setRecource(ParserRecource recource) {
+    public void setRecource(Recource recource) {
         this.recource = recource;
     }
 
-    private ParserRecource recource;
+    private Recource recource;
 
 
-    public ResourceThread(ParserRecource recource, Sum sum) {
+    public ResourceThread(Recource recource, Sum sum) {
         this.recource = recource;
         this.sum = sum;
     }
@@ -45,7 +47,13 @@ public class ResourceThread  extends Thread implements Runnable{
     @Override
     public void run() {
         if (recource.getPath() != null && !recource.getPath().equals("")){
-            recource.downloadRecource(getSum());
+            try {
+                recource.downloadRecource(getSum());
+            } catch (IOException e) {
+                e.printStackTrace();
+
+
+            }
         }
     }
 
