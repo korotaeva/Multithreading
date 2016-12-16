@@ -2,6 +2,7 @@ package ru.innopolis.uni.cource3.homework.Thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Recource.Recource;
 
@@ -28,31 +29,29 @@ public class ResourceThread  extends Thread implements Runnable{
     private Recource recource;
 
 
-    public ResourceThread(Recource recource, Sum sum) {
+    public ResourceThread(Recource recource, Monitor monitor) {
         this.recource = recource;
-        this.sum = sum;
+        this.monitor = monitor;
     }
 
 
-    public Sum getSum() {
-        return sum;
+    public Monitor getMonitor() {
+        return monitor;
     }
 
-    public void setSum(Sum sum) {
-        this.sum = sum;
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
     }
 
-    private Sum sum;
+    private Monitor monitor;
 
     @Override
     public void run() {
         if (recource.getPath() != null && !recource.getPath().equals("")){
             try {
-                recource.downloadRecource(getSum());
+                recource.downloadRecource(getMonitor());
             } catch (IOException e) {
                 e.printStackTrace();
-
-
             }
         }
     }

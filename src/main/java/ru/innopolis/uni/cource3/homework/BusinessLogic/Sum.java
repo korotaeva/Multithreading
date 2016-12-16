@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * Created by korot on 10.12.2016.
  */
-public class Sum {
+public class Sum implements Monitor {
     private static Logger logger = LoggerFactory.getLogger(Sum.class);
 
     public BigInteger getSumValue() {
@@ -44,11 +44,12 @@ public class Sum {
 
     /**
      *
-     * @param sNumber
+     * @param str
      */
-    public void calculateSum(String sNumber){
+    @Override
+    public void processing(String str){
         try {
-            int i = Integer.parseInt(sNumber);
+            int i = Integer.parseInt(str);
 
             if ((new ValidatorEvenPositive()).validate(i)){
                 synchronized (this) {

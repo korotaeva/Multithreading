@@ -16,7 +16,7 @@ public class SumTest {
     @Test
     public void calculateSum(){
         Sum sum = new Sum();
-        sum.calculateSum("46435135");
+        sum.processing("46435135");
 
 
        // assertTrue("gvklh;", sum.getSumValue() == Integer.46435135);
@@ -27,7 +27,7 @@ public class SumTest {
     public void Sum(){
         //int  sum = 4;
         Sum sum = new Sum();
-        sum.calculateSum("6gvhgggh4");
+        sum.processing("6gvhgggh4");
        // assertTrue("gvklh;", sum == 4);
     }
  /*

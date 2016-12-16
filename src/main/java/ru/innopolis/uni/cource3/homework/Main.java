@@ -26,7 +26,7 @@ public class Main {
         resources.add("c:/1/1.txt");
         resources.add("c:/1/2.txt");
         resources.add("c:/1/3.txt");
-        resources.add("http://vels.org.ru/index.php?menu=chisla");
+        //resources.add("http://vels.org.ru/index.php?menu=chisla");
 
         for (Object path : resources) {
             Recource recource = (new ValidatorURL()).validate(path)
