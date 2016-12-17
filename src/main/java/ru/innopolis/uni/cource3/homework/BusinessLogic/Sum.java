@@ -24,7 +24,7 @@ public class Sum implements Monitor {
         this.sumValue = BigInteger.valueOf(0);
     }
 
-    private volatile BigInteger sumValue;
+    private BigInteger sumValue;
 
     public BigInteger increment(int i){
 

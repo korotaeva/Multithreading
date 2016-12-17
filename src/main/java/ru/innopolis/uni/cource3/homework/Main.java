@@ -23,9 +23,9 @@ public class Main {
         // загрузить список ресурсов
 
         List resources = new ArrayList<String>();
-        resources.add("c:/1/1.txt");
-        resources.add("c:/1/2.txt");
-        resources.add("c:/1/3.txt");
+        resources.add("c:/files/1.txt");
+        resources.add("c:/files/2.txt");
+        resources.add("c:/files/3.txt");
 
         for (Object path : resources) {
             Recource recource = (new ValidatorURL()).validate(path)
