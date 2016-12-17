@@ -14,27 +14,13 @@ import java.io.IOException;
 /**
  * Created by korot on 10.12.2016.
  */
-public class Recource  implements Loader  {
+public interface Recource extends Loader {
     public static Logger logger = LoggerFactory.getLogger(Recource.class);
 
-    public Recource(String path) {
-        this.path = path;
+    String getPath();
 
-    }
+    void setPath(String path);
 
-    private String path;
+    void resourceProcessing(Monitor monitor) throws IOException;
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-
-    @Override
-    public void resourceProcessing(Monitor monitor) throws IOException {
-
-    }
 }

@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Recource.Recource;
-import ru.innopolis.uni.cource3.homework.Parser.ParserRecourceFile;
-import ru.innopolis.uni.cource3.homework.Parser.ParserRecourceURL;
+import ru.innopolis.uni.cource3.homework.Recource.FileRecource;
+import ru.innopolis.uni.cource3.homework.Recource.URLRecource;
 import ru.innopolis.uni.cource3.homework.Thread.ResourceThread;
 import ru.innopolis.uni.cource3.homework.Validator.ValidatorURL;
 
@@ -30,8 +30,8 @@ public class Main {
 
         for (Object path : resources) {
             Recource recource = (new ValidatorURL()).validate(path)
-                    ? new ParserRecourceURL(path.toString())
-                    : new ParserRecourceFile(path.toString());
+                    ? new URLRecource(path.toString())
+                    : new FileRecource(path.toString());
 
             Thread resourceThread = new ResourceThread(recource, sum);
             resourceThread.start();
