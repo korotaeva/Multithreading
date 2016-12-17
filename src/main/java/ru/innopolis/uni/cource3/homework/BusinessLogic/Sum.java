@@ -24,7 +24,7 @@ public class Sum implements Monitor {
         this.sumValue = BigInteger.valueOf(0);
     }
 
-    private BigInteger sumValue;
+    private volatile BigInteger sumValue;
 
     public BigInteger increment(int i){
 
@@ -60,9 +60,9 @@ public class Sum implements Monitor {
             }
         }
         catch (NumberFormatException e){
-            logger.error(e.getMessage());
+            logger.error("Error", e);
             setError(true);
-            throw e;
+ //           throw e;
 
         }
     }

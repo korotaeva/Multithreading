@@ -42,13 +42,13 @@ public class FileRecource implements Recource {
                 (new ParserStr()).parsing(str,monitor);
             }
         } catch (FileNotFoundException e) {
-            logger.error(e.getMessage());
+            logger.error("Error", e);
             monitor.setError(true);
-            throw e;
+           // throw e;
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            logger.error("Error", e);
             monitor.setError(true);
-            throw e;
+          //  throw e;
         }
     }
 

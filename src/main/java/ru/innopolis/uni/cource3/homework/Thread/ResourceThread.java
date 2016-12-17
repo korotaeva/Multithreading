@@ -46,12 +46,22 @@ public class ResourceThread  extends Thread implements Runnable{
 
     @Override
     public void run() {
+        logger.info(Thread.currentThread().getName() + " : process started - " + recource.getPath());
+
         if (recource.getPath() != null && !recource.getPath().equals("")){
             try {
                 recource.resourceProcessing(getMonitor());
             } catch (IOException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
+                monitor.setError(true);
             }
+        }
+        if (monitor.isError()) {
+            logger.error(Thread.currentThread().getName() + " : started stopped - " + recource.getPath());
+        }
+        else {
+            logger.info(Thread.currentThread().getName() + " : process finished success - " + recource.getPath());
         }
     }
 

@@ -9,9 +9,14 @@ public class ParserStr implements Parser{
 
     @Override
     public void parsing(String str, Monitor monitor) {
+
         String[] tokens = str.split(" ");
         for (String element : tokens) {
-            monitor.processing(element);
+            if (!element.equals(""))
+                monitor.processing(element);
+            if (monitor.isError()) {
+                break;
+            }
         }
     }
 }

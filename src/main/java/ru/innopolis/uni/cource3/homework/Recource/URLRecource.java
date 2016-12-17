@@ -42,7 +42,8 @@ public class URLRecource implements Recource {
         }
         catch (IOException e) {
             e.printStackTrace();
-            throw e;
+            logger.error("Error", e);
+            //throw e;
         }
     }
 }
