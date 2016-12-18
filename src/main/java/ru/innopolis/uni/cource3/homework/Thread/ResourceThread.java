@@ -12,8 +12,7 @@ import java.io.IOException;
  * Created by korot on 10.12.2016.
  * Поток, который загружает ресурсы и выполняет бизнес логику приложения
  */
-public class ResourceThread  extends Thread implements Runnable{
-
+public class ResourceThread   implements Runnable{
 
     private static Logger logger = LoggerFactory.getLogger(ResourceThread.class);
 
@@ -27,12 +26,10 @@ public class ResourceThread  extends Thread implements Runnable{
 
     private Recource recource;
 
-
     public ResourceThread(Recource recource, Monitor monitor) {
         this.recource = recource;
         this.monitor = monitor;
     }
-
 
     public Monitor getMonitor() {
         return monitor;

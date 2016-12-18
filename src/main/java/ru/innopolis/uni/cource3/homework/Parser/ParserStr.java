@@ -2,21 +2,25 @@ package ru.innopolis.uni.cource3.homework.Parser;
 
 import ru.innopolis.uni.cource3.homework.BusinessLogic.Monitor;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by korot on 17.12.2016.
  */
 public class ParserStr implements Parser{
 
-    @Override
-    public void parsing(String str, Monitor monitor) {
+    /**
+     * Парсинг строки считываемой из источника данных
+     * на числа, разделенные пробелом.
+     * @param str - строка для обработки
 
+     */
+    @Override
+    public List<String>  parsing(String str) {
         String[] tokens = str.split(" ");
-        for (String element : tokens) {
-            if (!element.equals(""))
-                monitor.processing(element);
-            if (monitor.isError()) {
-                break;
-            }
-        }
+        List<String> tokensList = Arrays.asList(tokens);
+        tokensList.remove("");
+        return tokensList;
     }
 }

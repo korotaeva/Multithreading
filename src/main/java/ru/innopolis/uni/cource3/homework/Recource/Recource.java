@@ -21,6 +21,12 @@ public interface Recource extends Loader {
 
     void setPath(String path);
 
-    void resourceProcessing(Monitor monitor) throws IOException;
+    /**
+     * Метод по обработке ресурса в отдельном потоке
+     * @param monitor - это разделяемый объект, который включает
+     *                результат выполнения бизнес логики
+     * @throws IOException
+     */
+    void resourceProcessing(Monitor monitor)throws IOException ;
 
 }

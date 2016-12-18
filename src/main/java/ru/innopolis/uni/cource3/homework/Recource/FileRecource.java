@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by korot on 14.12.2016.
@@ -33,22 +34,38 @@ public class FileRecource implements Recource {
         this.path = path;
     }
 
+    /**
+     *  Метод по обработке ресурса в отдельном потоке
+     *  Читает данные из файла построчно
+     * @param monitor - это разделяемый объект, который включает
+     *                результат выполнения бизнес логики
+     * Если при обработки одного из элементов строки
+     * происходит ошибка, записываем в объект монитор флаг ошибки
+     * @throws IOException
+     */
     @Override
-    public void resourceProcessing(Monitor monitor) throws IOException {
+    public void resourceProcessing(Monitor monitor)  {
         try (FileReader file = new FileReader(getPath());
             BufferedReader buffer = new BufferedReader(file)) {
             String str;
             while ((str = buffer.readLine()) != null && !monitor.isError()) {
-                (new ParserStr()).parsing(str,monitor);
+                List<String> tokens = (new ParserStr()).parsing(str);
+                for (String element : tokens) {
+                        monitor.processing(element);
+                    if (monitor.isError()) {
+                        break;
+                    }
+                }
+
             }
         } catch (FileNotFoundException e) {
             logger.error("Error", e);
             monitor.setError(true);
-           // throw e;
+
         } catch (IOException e) {
             logger.error("Error", e);
             monitor.setError(true);
-          //  throw e;
+
         }
     }
 

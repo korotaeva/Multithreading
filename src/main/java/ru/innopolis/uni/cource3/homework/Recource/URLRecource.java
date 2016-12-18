@@ -28,6 +28,13 @@ public class URLRecource implements Recource {
         this.path = path;
     }
 
+    /**
+     *  Метод по обработке ресурса в отдельном потоке
+     *  Читает данные из удаленного источника построчно
+     * @param monitor - это разделяемый объект, который включает
+     *                результат выполнения бизнес логики
+     * @throws IOException
+     */
     @Override
     public void resourceProcessing(Monitor monitor) throws IOException {
         URL oracle = new URL(getPath());

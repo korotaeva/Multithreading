@@ -10,5 +10,10 @@ import java.io.IOException;
  * Created by korot on 16.12.2016.
  */
 public interface Loader {
+    /**
+     * Загрузка ресурса из определенного источника
+     * @param monitor - объект, содержащий разделяемый ресурс
+     * @throws IOException
+     */
     void resourceProcessing(Monitor monitor) throws IOException;
 }
