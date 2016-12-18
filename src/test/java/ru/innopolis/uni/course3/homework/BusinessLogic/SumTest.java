@@ -16,24 +16,10 @@ public class SumTest {
     @Test
     public void processing(){
         Sum sum = new Sum();
-        sum.processing("46435135");
-
-        assertTrue("Сумма", sum.getSumValue() == BigInteger.valueOf(46435135));
+        sum.processing("18");
+        sum.processing("8");
+        assertTrue("Сумма", sum.getSumValue().equals(BigInteger.valueOf(26)));
     }
 
-    // ожидаем исключение
-    @Test(expected = NumberFormatException.class)
-    public void Sum(){
-        //int  sum = 4;
-        Sum sum = new Sum();
-        sum.processing("6gvhgggh4");
-       // assertTrue("gvklh;", sum == 4);
-    }
- /*
 
-    @After
-    public void calculateSum(){
-
-    }
-*/
 }

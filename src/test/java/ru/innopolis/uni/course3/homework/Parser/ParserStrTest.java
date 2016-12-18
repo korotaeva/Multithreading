@@ -5,6 +5,7 @@ import ru.innopolis.uni.cource3.homework.BusinessLogic.Sum;
 import ru.innopolis.uni.cource3.homework.Parser.ParserStr;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -14,9 +15,8 @@ import static org.junit.Assert.assertTrue;
 public class ParserStrTest {
     @Test
     public void parsing(){
-        Sum sum = new Sum();
         ParserStr parserStr = new ParserStr();
-        parserStr.parsing("12 8", sum);
-        assertTrue("Сумма", sum.getSumValue() == BigInteger.valueOf(20));
+        List<String> list = parserStr.parsing("12 8");
+        assertTrue("Количество пропарсенных элементов совпадает",list.size() == 2);
     }
 }
